@@ -330,7 +330,7 @@
         });
       }
       function googleMap() {
-        window.location.href = 'https://maps.google.com';
+        window.location.href = 'https://www.google.co.in/maps/place/BITS+Pilani/@28.3634582,75.5838578,17z/data=!3m1!4b1!4m5!3m4!1s0x391319c1e88a4365:0xaeca0b9b79331cde!8m2!3d28.3634535!4d75.5860465';
       }
       function fetchOrders() {
         var docRef = db.collection("users").doc(email);
@@ -343,7 +343,6 @@
                 document.getElementById('myOrders').appendChild(li);
                 document.getElementById('services').style.display = 'none';
                 document.getElementById('descrip').style.display = 'flex';
-                alert('hehe');
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
