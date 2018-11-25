@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<title>NOCTURNAL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    #btn-grp {
+        position: absolute;
+        right: 5vw;
+        top: 15vh;
+    }
+    #cars {
+      position: absolute;
+      left: 5vw;
+      display: flex;
+      flex-direction: row;
+      top: 15vh;
+      width: 70vw;
+      z-index: 100;
+      height: 70vh;
+      background-color: rgba(0,0,0,0.8);
+      color: white;
+    }
+    #services {
+      display: none;
+      flex-direction: row;
+      position: absolute;
+      left: 20vw;
+      margin-top: 20px;
+      height: 90%;
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+      align-items: center;
+      justify-content: space-around;
+    }
+    #silver {
+      color: white;
+      background-color: silver;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #gold {
+      color: white;
+      background-color: gold;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #platinum {
+      color: white;
+      background-color: #4400FF;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #services a {
+      background-color: white;
+      width: 10vw;
+      height: 8vh;
+      color: black;
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+    }
+    #services a:hover {
+      background-color: black;
+      color: white;
+    }
+    #descrip {
+      position: relative;
+      font-size: 25px;
+      color: white;
+      width: 30vw;
+      height: 90%;
+      margin-left: 5vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+    ::-webkit-scrollbar {
+      width: 1em;
+      background-color: rgb(40,40,40);
+    }
+    
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+      border-radius: 3px;
+    }
+    #select_car {
+      display: flex;
+      position: relative;
+      margin-top: 20px;
+      margin-left: 20px;
+      width: 20%;
+      height: 90%;
+      overflow-y: scroll;
+    }
+    #select_car ul {
+      list-style: none;
+    }
+    #select_car > ul > li {
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+    }
+    #select_car > ul > li:hover {
+      background-color: white;
+      color: black;
+    }
+    button {
+        position: relative;
+        width: 16vw;
+        height: 10vh;
+        background-color: black;
+        opacity: 0.8;
+        color: white;
+        border: none;
+        margin: 4vh 0;
+    }
+    #myOrders {
+      font-size: 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+</style>
+<body style="overflow:hidden;">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>NOCTURNAL GARAGE</b></a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="about.html" class="w3-bar-item w3-button">About</a>
+      <a href="register.html" style="display: none;" class="w3-bar-item w3-button" id="sign-in">Sign in</a>
+      <a onclick="signOut()" class="w3-bar-item w3-button" id="sign-out">Sign Out</a>
+      <a href="contact.html" class="w3-bar-item w3-button">Contact Us</a>
+      <a href="contact.html" class="w3-bar-item w3-button">Driver's location</a>
+      <a class="w3-bar-item w3-button" id="Name"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="overflow-y:hidden;max-width:1500px;height: 100vh;position: fixed;">
+  <img class="w3-image" src="Car.jpg" alt="Architecture" style="overflow-y:hidden;" width="1500" height="800">
+  <div style="overflow-y:hidden;" class="w3-display-middle w3-margin-top w3-center">
+  </div>
+</header>
+
+<div id="cars">
+  <div id="select_car">
+    <ul>
+      <li onclick="showServices(this)">Honda City</li>
+      <li onclick="showServices(this)">Jaguar</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Honda City</li>
+      <li onclick="showServices(this)">Jaguar</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Honda City</li>
+      <li onclick="showServices(this)">Jaguar</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Honda City</li>
+      <li onclick="showServices(this)">Jaguar</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Honda City</li>
+      <li onclick="showServices(this)">Jaguar</li>
+      <li onclick="showServices(this)">Swift Dzire</li>
+      <li onclick="showServices(this)">Tata Nano</li>
+    </ul>
+  </div>
+  <div id="descrip">
+    <p>Select a car from the list to see available services!</p>
+    <button onclick="fetchOrders()" id="order_btn" style="z-index: 200;display: none; font-size: 18px; width: 20vw;">See your orders!</button>
+    <div id="myOrders"></div>
+  </div>
+  <div id="services">
+    <div id="silver">
+      <h2>SILVER</h2>
+      <li>Service 1</li>
+      <li>Service 2</li>
+      <li>Service 3</li>
+      <li>Service 4</li>
+      <a onclick="orderNow('Silver')">Order Now</a>
+    </div>
+    <div id="gold">
+      <h2>GOLD</h2>
+      <li>Service 1</li>
+      <li>Service 2</li>
+      <li>Service 3</li>
+      <li>Service 4</li>
+      <a onclick="orderNow('Gold')">Order Now</a>
+    </div>
+    <div id="platinum">
+      <h2>PLATINUM</h2>
+      <li>Service 1</li>
+      <li>Service 2</li>
+      <li>Service 3</li>
+      <li>Service 4</li>
+      <a onclick="orderNow('Platinum')">Order Now</a>
+    </div>
+  </div>
+</div>
+
+<div style="overflow: hidden;" id="btn-grp">
+<div><button onclick="fetchOrders()" style="cursor: pointer;">See your orders!</button>
+</div>    
+<div><button>Book your car with us</button>
+</div>
+<div><button style="cursor: pointer;" onclick="googleMap()">Driver location</button>
+</div>
+<div><button>Watch CCTV Footage</button>
+</div>
+</div>
+
+<!-- Footer -->
+<footer style="position: fixed; bottom: 0; width: 100%; height: 7vh; display: flex; align-items: center;justify-content: center;" class="w3-center w3-black w3-padding-16">
+  <p>Copyright 2018 &copy; by NOCTURNAL GARAGE</p>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+      var car;
+      function showServices(selected_car) {
+        document.getElementById('services').style.display = 'flex';
+        document.getElementById('descrip').style.display = 'none';
+        car = selected_car.innerHTML;
+      }  
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBREp-lWqR5M3ngN1IdfRQbka49qC52ovc",
+        authDomain: "nocturnal-f3ea6.firebaseapp.com",
+        databaseURL: "https://nocturnal-f3ea6.firebaseio.com",
+        projectId: "nocturnal-f3ea6",
+        storageBucket: "nocturnal-f3ea6.appspot.com",
+        messagingSenderId: "529955202071"
+      };
+      firebase.initializeApp(config);
+      var db = firebase.firestore();
+
+      // Disable deprecated features
+      db.settings({
+        timestampsInSnapshots: true
+      });
+      var email;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          // ...
+          console.log(user);
+          var docRef = db.collection("users").doc(email);
+
+          docRef.get().then(function(doc) {
+              if (doc.exists) {
+                  console.log("Document data:", doc.data());
+                  document.getElementById('sign-in').innerHTML = 'Hey, ' + doc.data().name + '!';
+                  document.getElementById('sign-in').style.display = 'block';
+                  document.getElementById('sign-in').href = "";
+                  document.getElementById('sign-out').style.display = 'block';
+                  document.getElementById('order_btn').style.display = 'block';
+              } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+                  alert('Please sign in first!');
+              }
+          }).catch(function(error) {
+              console.log("Error getting document:", error);
+          });
+        } else {
+          // User is signed out.
+          // ...
+          document.getElementById('sign-in').innerHTML = 'Sign in';
+          document.getElementById('sign-in').style.display = 'block';
+          document.getElementById('sign-out').style.display = 'none';
+          console.log('signed out!');
+        }
+      });
+      function signOut() {
+        firebase.auth().signOut().then(function() {
+          document.getElementById('sign-in').innerHTML = 'Sign in';
+          document.getElementById('sign-out').style.display = 'block';
+          document.getElementById('sign-out').style.display = 'none';
+        }).catch(function(error) {
+          alert('Signout failed');
+        });
+      }
+      function googleMap() {
+        window.location.href = 'https://maps.google.com';
+      }
+      function fetchOrders() {
+        var docRef = db.collection("users").doc(email);
+
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                var li = document.createElement('li');
+                li.innerHTML = doc.data().car + " - " + doc.data().service_type;
+                document.getElementById('myOrders').appendChild(li);
+                document.getElementById('services').style.display = 'none';
+                document.getElementById('descrip').style.display = 'flex';
+                alert('hehe');
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+                alert('Please sign in first!');
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+            alert('No orders!');
+        });
+      }
+      function orderNow(service_type) {
+        db.collection("users").doc(email).set({
+              service_type: service_type,
+              car: car
+        }, { merge: true })
+        .then(function() {
+            console.log("Document successfully written!");
+            alert('Order done!');
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+      }
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login and Signup form</title>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 7vh;
+        z-index: 100;
+        background-color: black;
+        opacity: 0.8;
+        text-align: center;
+        font-size: 23px;
+        padding: 4vh;
+        color: white;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 10vh;
+        z-index: 100;
+        background-color: black;
+        opacity: 0.8;
+        text-align: center;
+        font-size: 4vw;
+        padding: 4vh;
+        color: white;
+      }
+    </style>
+</head>
+
+<body>
+
+  <!-- Inspiration
+  https://dribbble.com/shots/2311260-Day-1-Sign-Up-and-Login-Animated
+-->
+<div class="header">NOCTURNAL GARAGE</div>
+<section class="user-authentication">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't have an account?</h2>
+        <p class="user_unregistered-text">Sign up below in just 2 minutes.</p>
+        <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Have an account?</h2>
+        <p class="user_registered-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis nibh in leo lacinia blandit et quis lorem.</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="email" id="l_email" placeholder="Username or Phone" class="forms_field-input" required autofocus />
+            </div>
+            <div class="forms_field">
+              <input type="password" id="l_pass" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="button" class="forms_buttons-forgot" id="forget-button">Forgot password?</button>
+            <button type="submit" class="forms_buttons-action">Login</button>
+						<a class="forms_buttons-mb-button" id="signup-button-mb">Sign up</a>
+          </div>
+        </form>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Sign Up</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="email" id="s_email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+              <input type="password" id="s_pass" placeholder="Password" class="forms_field-input" required />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="submit" class="forms_buttons-action">Sign up</button>
+						<a class="forms_buttons-mb-button" id="login-button-mb">Login</a>
+          </div>
+        </form>
+      </div>
+			<div class="user_forms-forgot">
+        <h2 class="forms_title">Forgot Password</h2>
+        <form class="forms_form">
+          <fieldset class="forms_fieldset">
+            <div class="forms_field">
+              <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
+            </div>
+          </fieldset>
+          <div class="forms_buttons">
+            <button type="submit" class="forms_buttons-action">Send reset link</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  
+    <div class="footer">Copyright &copy; by NOCTURNAL 2018</div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBREp-lWqR5M3ngN1IdfRQbka49qC52ovc",
+        authDomain: "nocturnal-f3ea6.firebaseapp.com",
+        databaseURL: "https://nocturnal-f3ea6.firebaseio.com",
+        projectId: "nocturnal-f3ea6",
+        storageBucket: "nocturnal-f3ea6.appspot.com",
+        messagingSenderId: "529955202071"
+      };
+      firebase.initializeApp(config);
+      function submit() {
+        var email = document.getElementById('s_email');
+        var password = document.getElementById('s_pass');
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ...
+        });
+      }  
+      function login() {
+        var email = document.getElementById('l_email');
+        var password = document.getElementById('l_pass');
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ...
+        });
+      }  
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          // ...
+        } else {
+          // User is signed out.
+          // ...
+        }
+      });
+    </script>
+</body>
+</html>
