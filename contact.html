@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<title>NOCTURNAL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    #btn-grp {
+        position: absolute;
+        right: 5vw;
+        top: 15vh;
+    }
+    #cars {
+      position: absolute;
+      left: 5vw;
+      display: flex;
+      flex-direction: row;
+      top: 15vh;
+      width: 70vw;
+      z-index: 100;
+      height: 70vh;
+      background-color: rgba(0,0,0,0.8);
+      color: white;
+    }
+    #services {
+      display: none;
+      flex-direction: row;
+      position: absolute;
+      left: 20vw;
+      margin-top: 20px;
+      height: 90%;
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+      align-items: center;
+      justify-content: space-around;
+    }
+    #silver {
+      color: white;
+      background-color: silver;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #gold {
+      color: white;
+      background-color: gold;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #platinum {
+      color: white;
+      background-color: #4400FF;
+      opacity: 0.9;
+      width: 15vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px;
+      height: 100%;
+    }
+    #services a {
+      background-color: white;
+      width: 10vw;
+      height: 8vh;
+      color: black;
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+    }
+    #services a:hover {
+      background-color: black;
+      color: white;
+    }
+    #descrip {
+      position: relative;
+      font-size: 25px;
+      color: white;
+      width: 30vw;
+      height: 90%;
+      margin-left: 5vw;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+    ::-webkit-scrollbar {
+      width: 1em;
+      background-color: rgb(40,40,40);
+    }
+    
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+      border-radius: 3px;
+    }
+    #select_car {
+      display: flex;
+      position: relative;
+      margin-top: 20px;
+      margin-left: 20px;
+      width: 20%;
+      height: 90%;
+      overflow-y: scroll;
+    }
+    #select_car ul {
+      list-style: none;
+    }
+    #select_car > ul > li {
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+    }
+    #select_car > ul > li:hover {
+      background-color: white;
+      color: black;
+    }
+    button {
+        position: relative;
+        width: 16vw;
+        height: 10vh;
+        background-color: black;
+        opacity: 0.8;
+        color: white;
+        border: none;
+        margin: 4vh 0;
+    }
+    #myOrders {
+      font-size: 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #contact_us {
+        color: black;
+        width: 90vw;
+        height: 50vh;
+        text-align: center;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 20px;
+    }
+</style>
+<body style="overflow:hidden;">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="index.html" class="w3-bar-item w3-button"><b>NOCTURNAL GARAGE</b></a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="about.html" class="w3-bar-item w3-button">About</a>
+      <a href="register.html" style="display: none;" class="w3-bar-item w3-button" id="sign-in">Sign in</a>
+      <a onclick="signOut()" class="w3-bar-item w3-button" id="sign-out">Sign Out</a>
+      <a href="contact.html" class="w3-bar-item w3-button">Contact Us</a>
+      <!-- <a href="contact.html" class="w3-bar-item w3-button">Driver's location</a> -->
+      <a class="w3-bar-item w3-button" id="Name"></a>
+    </div>
+  </div>
+</div>
+<div id="contact_us">
+    <div style="font-size: 30px;">CONTACT US</div>
+    <hr>
+    For more information<hr>
+    Call-8588067835,9119225011<hr>
+    Email Id- saurabhrai002@gmail.com, siddharthgoyal3022@gmail.com
+</div>
+<footer style="position: fixed; bottom: 0; width: 100%; height: 7vh; display: flex; align-items: center;justify-content: center;" class="w3-center w3-black w3-padding-16">
+    <p>Copyright 2018 &copy; by NOCTURNAL GARAGE</p>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script>
+        var car;
+        function showServices(selected_car) {
+          document.getElementById('services').style.display = 'flex';
+          document.getElementById('descrip').style.display = 'none';
+          car = selected_car.innerHTML;
+        }  
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBREp-lWqR5M3ngN1IdfRQbka49qC52ovc",
+          authDomain: "nocturnal-f3ea6.firebaseapp.com",
+          databaseURL: "https://nocturnal-f3ea6.firebaseio.com",
+          projectId: "nocturnal-f3ea6",
+          storageBucket: "nocturnal-f3ea6.appspot.com",
+          messagingSenderId: "529955202071"
+        };
+        firebase.initializeApp(config);
+        var db = firebase.firestore();
+  
+        // Disable deprecated features
+        db.settings({
+          timestampsInSnapshots: true
+        });
+        var email;
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+            // ...
+            console.log(user);
+            var docRef = db.collection("users").doc(email);
+  
+            docRef.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    document.getElementById('sign-in').innerHTML = 'Hey, ' + doc.data().name + '!';
+                    document.getElementById('sign-in').style.display = 'block';
+                    document.getElementById('sign-in').href = "";
+                    document.getElementById('sign-out').style.display = 'block';
+                    document.getElementById('order_btn').style.display = 'block';
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                    alert('Please sign in first!');
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+          } else {
+            // User is signed out.
+            // ...
+            document.getElementById('sign-in').innerHTML = 'Sign in';
+            document.getElementById('sign-in').style.display = 'block';
+            document.getElementById('sign-out').style.display = 'none';
+            console.log('signed out!');
+          }
+        });
+        function signOut() {
+          firebase.auth().signOut().then(function() {
+            document.getElementById('sign-in').innerHTML = 'Sign in';
+            document.getElementById('sign-out').style.display = 'block';
+            document.getElementById('sign-out').style.display = 'none';
+          }).catch(function(error) {
+            alert('Signout failed');
+          });
+        }
+        function googleMap() {
+          window.location.href = 'https://www.google.co.in/maps/place/BITS+Pilani/@28.3634582,75.5838578,17z/data=!3m1!4b1!4m5!3m4!1s0x391319c1e88a4365:0xaeca0b9b79331cde!8m2!3d28.3634535!4d75.5860465';
+        }
+        function fetchOrders() {
+          var docRef = db.collection("users").doc(email);
+  
+          docRef.get().then(function(doc) {
+              if (doc.exists) {
+                  console.log("Document data:", doc.data());
+                  var li = document.createElement('li');
+                  li.innerHTML = doc.data().car + " - " + doc.data().service_type;
+                  document.getElementById('myOrders').appendChild(li);
+                  document.getElementById('services').style.display = 'none';
+                  document.getElementById('descrip').style.display = 'flex';
+              } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+                  alert('Please sign in first!');
+              }
+          }).catch(function(error) {
+              console.log("Error getting document:", error);
+              alert('No orders!');
+          });
+        }
+        var price;
+        function orderNow(service_type) {
+          
+          if(car == 'Honda City-Petrol') {
+            if(service_type == 'Silver') {
+              price = 1590;
+            }
+            else if(service_type == 'Gold') {
+              price = 2780;
+            }
+            else if(service_type == 'Platinum') {
+              price = 4180;
+            }
+          }
+           else if(car == 'Honda City-Diesel') {
+            if(service_type == 'Silver') {
+             price = 2610;
+            }
+           else if(service_type == 'Gold'){
+             price = 3810; 
+           }
+           else if(service_type == 'Platinum'){
+             price = 5210 ;
+           }
+          }
+           else if(car == 'Swift Dzire-Petrol'){
+             if(service_type == 'Silver') {
+             price = 1520 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 2740 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 4140 ;
+           }
+          }
+           else if(car == 'Swift Dzire-Diesel'){
+            if(service_type == 'Silver') {
+             price = 2740 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 3970 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 5370 ;
+           }
+           }
+           else if(car == 'Alto 800'){
+            if(service_type == 'Silver') {
+             price = 1350 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 2390 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 3790 ;
+           }
+           }
+           else if(car == 'Wagon R'){
+            if(service_type == 'Silver') {
+             price = 1470 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 2510 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 3910 ;
+           }
+           }
+           else if(car == 'Maruti Suzuki Ciaz-Petrol'){
+            if(service_type == 'Silver') {
+             price = 2040 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 3190 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 4590 ;
+           }
+           }
+           else if(car == 'Maruti Suzuki Ciaz-Diesel'){
+            if(service_type == 'Silver') {
+             price = 3110 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 4260 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 5660 ;
+           }
+           }
+           else if(car == 'i20 Elite-Petrol'){
+            if(service_type == 'Silver') {
+             price = 1890 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 3140 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 4540 ;
+           }
+           }
+           else if(car == 'i20 Elite-Diesel'){
+            if(service_type == 'Silver') {
+             price = 2950 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 4100 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 5500 ;
+           }
+           }
+           else if(car == 'Grand i10-Petrol'){
+            if(service_type == 'Silver') {
+             price = 1230 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 2380 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 3780 ;
+           }
+           }
+           else if(car == 'Grand i10-Diesel'){
+            if(service_type == 'Silver') {
+             price = 2150 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 3300 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 4700 ;
+           }
+           }
+           else if(car == 'Mahindra Scorpio'){
+            if(service_type == 'Silver') {
+             price = 3220 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 4370 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 5770 ;
+           }
+           }
+           else if(car == 'Honda Amaze-Petrol'){
+            if(service_type == 'Silver') {
+             price = 2050 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 3200 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 4600 ;
+           }
+           }
+           else if(car == 'Honda Amaze-Diesel'){
+            if(service_type == 'Silver') {
+             price = 2720 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 4370 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 5770 ;
+           }
+           }
+           else if(car == 'Toyota Innova-Diesel'){
+            if(service_type == 'Silver') {
+             price = 4000 ;
+           }
+           else if(service_type == 'Gold'){
+             price = 5750 ; 
+          }
+          else if(service_type == 'Platinum'){
+             price = 7150 ;
+           }
+           }
+          db.collection("users").doc(email).set({
+                service_type: service_type,
+                car: car,
+                price: price
+          }, { merge: true })
+          .then(function() {
+              console.log("Document successfully written!");
+              alert('Order done!');
+          })
+          .catch(function(error) {
+              console.error("Error writing document: ", error);
+          });
+        }
+  </script>  
+  
+  </body>
+  </html>

@@ -157,14 +157,14 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>NOCTURNAL GARAGE</b></a>
+    <a href="index.html" class="w3-bar-item w3-button"><b>NOCTURNAL GARAGE</b></a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <a href="about.html" class="w3-bar-item w3-button">About</a>
       <a href="register.html" style="display: none;" class="w3-bar-item w3-button" id="sign-in">Sign in</a>
       <a onclick="signOut()" class="w3-bar-item w3-button" id="sign-out">Sign Out</a>
       <a href="contact.html" class="w3-bar-item w3-button">Contact Us</a>
-      <a href="contact.html" class="w3-bar-item w3-button">Driver's location</a>
+      <!-- <a href="contact.html" class="w3-bar-item w3-button">Driver's location</a> -->
       <a class="w3-bar-item w3-button" id="Name"></a>
     </div>
   </div>
@@ -180,60 +180,70 @@
 <div id="cars">
   <div id="select_car">
     <ul>
-      <li onclick="showServices(this)">Honda City</li>
-      <li onclick="showServices(this)">Jaguar</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Honda City</li>
-      <li onclick="showServices(this)">Jaguar</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Honda City</li>
-      <li onclick="showServices(this)">Jaguar</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Honda City</li>
-      <li onclick="showServices(this)">Jaguar</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
-      <li onclick="showServices(this)">Honda City</li>
-      <li onclick="showServices(this)">Jaguar</li>
-      <li onclick="showServices(this)">Swift Dzire</li>
-      <li onclick="showServices(this)">Tata Nano</li>
+      <li onclick="showServices(this)">Honda City-Petrol</li>
+      <li onclick="showServices(this)">Honda City-Diesel</li>
+      <li onclick="showServices(this)">Swift Dzire-Petrol</li>
+      <li onclick="showServices(this)">Swift Dzire-Diesel</li>
+      <li onclick="showServices(this)">Alto 800</li>
+      <li onclick="showServices(this)">Wagon R</li>
+      <li onclick="showServices(this)">Maruti Suzuki Ciaz-Petrol</li>
+      <li onclick="showServices(this)">Maruti Suzuki Ciaz-Diesel</li>
+      <li onclick="showServices(this)">i20 Elite-Petrol</li>
+      <li onclick="showServices(this)">i20 Elite-Diesel</li>
+      <li onclick="showServices(this)">Grand i10-Petrol</li>
+      <li onclick="showServices(this)">Grand i10-Diesel</li>
+      <li onclick="showServices(this)">Mahindra Scorpio</li>
+      <li onclick="showServices(this)">Honda Amaze-Petrol</li>
+      <li onclick="showServices(this)">Honda Amaze-Diesel</li>
+      <li onclick="showServices(this)">Toyota Innova-Diesel</li>
     </ul>
   </div>
   <div id="descrip">
     <p>Select a car from the list to see available services!</p>
-    <button onclick="fetchOrders()" id="order_btn" style="z-index: 200;display: none; font-size: 18px; width: 20vw;">See your orders!</button>
+    <button onclick="fetchOrders()" id="order_btn" style="cursor: pointer;z-index: 200;display: none; font-size: 18px; width: 20vw;">See your orders!</button>
     <div id="myOrders"></div>
   </div>
   <div id="services">
     <div id="silver">
       <h2>SILVER</h2>
-      <li>Service 1</li>
-      <li>Service 2</li>
-      <li>Service 3</li>
-      <li>Service 4</li>
+      <li>Air Filter</li>
+      <li>Engine Oil</li>
+      <li>Fuel Filter</li>
+      <li>Oil Filter</li>
+      <li>Break-Clutch Oil</li>
+      <li>Greasing</li>
       <a onclick="orderNow('Silver')">Order Now</a>
     </div>
     <div id="gold">
       <h2>GOLD</h2>
-      <li>Service 1</li>
-      <li>Service 2</li>
-      <li>Service 3</li>
-      <li>Service 4</li>
+      <li>Air Filter</li>
+      <li>Engine Oil</li>
+      <li>Fuel Filter</li>
+      <li>Oil Filter</li>
+      <li>Break-Clutch Oil</li>
+      <li>Greasing</li>
+      <li>Coolant</li>
+      <li>Spark Plug</li>
+      <li>Car Wash</li>
+      <li>Power-Steering Fluids</li>
       <a onclick="orderNow('Gold')">Order Now</a>
     </div>
     <div id="platinum">
       <h2>PLATINUM</h2>
-      <li>Service 1</li>
-      <li>Service 2</li>
-      <li>Service 3</li>
-      <li>Service 4</li>
+      <li>Air Filter</li>
+      <li>Engine Oil</li>
+      <li>Fuel Filter</li>
+      <li>Oil Filter</li>
+      <li>Break-Clutch Oil</li>
+      <li>Greasing</li>
+      <li>Coolant</li>
+      <li>Spark Plug</li>
+      <li>Car Wash</li>
+      <li>Power-Steering Fluids</li>
+      <li>Cabin Filter</li>
+      <li>Transmission </li>
+      <li>Break-Pads Liners</li>
+
       <a onclick="orderNow('Platinum')">Order Now</a>
     </div>
   </div>
@@ -242,7 +252,7 @@
 <div style="overflow: hidden;" id="btn-grp">
 <div><button onclick="fetchOrders()" style="cursor: pointer;">See your orders!</button>
 </div>    
-<div><button>Book your car with us</button>
+<div><button onclick="showServices(2)">Book your car with us</button>
 </div>
 <div><button style="cursor: pointer;" onclick="googleMap()">Driver location</button>
 </div>
@@ -263,6 +273,9 @@
         document.getElementById('services').style.display = 'flex';
         document.getElementById('descrip').style.display = 'none';
         car = selected_car.innerHTML;
+        if(selected_car == 2) {
+          car = 'Honda City-Petrol';
+        }
       }  
       // Initialize Firebase
       var config = {
@@ -333,13 +346,14 @@
         window.location.href = 'https://www.google.co.in/maps/place/BITS+Pilani/@28.3634582,75.5838578,17z/data=!3m1!4b1!4m5!3m4!1s0x391319c1e88a4365:0xaeca0b9b79331cde!8m2!3d28.3634535!4d75.5860465';
       }
       function fetchOrders() {
+        document.getElementById('myOrders').innerHTML = "";
         var docRef = db.collection("users").doc(email);
 
         docRef.get().then(function(doc) {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
                 var li = document.createElement('li');
-                li.innerHTML = doc.data().car + " - " + doc.data().service_type;
+                li.innerHTML = doc.data().car + " - " + doc.data().service_type + " - Rs. " + doc.data().price;
                 document.getElementById('myOrders').appendChild(li);
                 document.getElementById('services').style.display = 'none';
                 document.getElementById('descrip').style.display = 'flex';
@@ -353,10 +367,189 @@
             alert('No orders!');
         });
       }
+      var price;
       function orderNow(service_type) {
+        
+        if(car == 'Honda City-Petrol') {
+          if(service_type == 'Silver') {
+            price = 1590;
+          }
+          else if(service_type == 'Gold') {
+            price = 2780;
+          }
+          else if(service_type == 'Platinum') {
+            price = 4180;
+          }
+        }
+         else if(car == 'Honda City-Diesel') {
+          if(service_type == 'Silver') {
+           price = 2610;
+          }
+         else if(service_type == 'Gold'){
+           price = 3810; 
+         }
+         else if(service_type == 'Platinum'){
+           price = 5210 ;
+         }
+        }
+         else if(car == 'Swift Dzire-Petrol'){
+           if(service_type == 'Silver') {
+           price = 1520 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 2740 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 4140 ;
+         }
+        }
+         else if(car == 'Swift Dzire-Diesel'){
+          if(service_type == 'Silver') {
+           price = 2740 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 3970 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 5370 ;
+         }
+         }
+         else if(car == 'Alto 800'){
+          if(service_type == 'Silver') {
+           price = 1350 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 2390 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 3790 ;
+         }
+         }
+         else if(car == 'Wagon R'){
+          if(service_type == 'Silver') {
+           price = 1470 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 2510 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 3910 ;
+         }
+         }
+         else if(car == 'Maruti Suzuki Ciaz-Petrol'){
+          if(service_type == 'Silver') {
+           price = 2040 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 3190 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 4590 ;
+         }
+         }
+         else if(car == 'Maruti Suzuki Ciaz-Diesel'){
+          if(service_type == 'Silver') {
+           price = 3110 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 4260 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 5660 ;
+         }
+         }
+         else if(car == 'i20 Elite-Petrol'){
+          if(service_type == 'Silver') {
+           price = 1890 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 3140 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 4540 ;
+         }
+         }
+         else if(car == 'i20 Elite-Diesel'){
+          if(service_type == 'Silver') {
+           price = 2950 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 4100 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 5500 ;
+         }
+         }
+         else if(car == 'Grand i10-Petrol'){
+          if(service_type == 'Silver') {
+           price = 1230 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 2380 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 3780 ;
+         }
+         }
+         else if(car == 'Grand i10-Diesel'){
+          if(service_type == 'Silver') {
+           price = 2150 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 3300 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 4700 ;
+         }
+         }
+         else if(car == 'Mahindra Scorpio'){
+          if(service_type == 'Silver') {
+           price = 3220 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 4370 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 5770 ;
+         }
+         }
+         else if(car == 'Honda Amaze-Petrol'){
+          if(service_type == 'Silver') {
+           price = 2050 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 3200 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 4600 ;
+         }
+         }
+         else if(car == 'Honda Amaze-Diesel'){
+          if(service_type == 'Silver') {
+           price = 2720 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 4370 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 5770 ;
+         }
+         }
+         else if(car == 'Toyota Innova-Diesel'){
+          if(service_type == 'Silver') {
+           price = 4000 ;
+         }
+         else if(service_type == 'Gold'){
+           price = 5750 ; 
+        }
+        else if(service_type == 'Platinum'){
+           price = 7150 ;
+         }
+         }
         db.collection("users").doc(email).set({
               service_type: service_type,
-              car: car
+              car: car,
+              price: price
         }, { merge: true })
         .then(function() {
             console.log("Document successfully written!");
@@ -367,5 +560,15 @@
         });
       }
 </script>
+<!-- ABOUT US
+We, are a team of individuals who are working all night to ensure that your car gets serviced . We work all night to ensure that  your car is serviced properly with full security and genuineness. We are providing CCTV Footages, Location of the Driver, Estimated Cost of Servicing to ensure 100% transparency in our system.
+
+
+CONTACT US
+For more information
+Call-8588067835,9119225011
+Email Id- saurabhrai002@gmail.com, siddharthgoyal3022@gmail.com -->
+
+
 </body>
 </html>

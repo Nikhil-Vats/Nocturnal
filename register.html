@@ -134,7 +134,10 @@
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
           console.log('Success');
           db.collection("users").doc(email).set({
-              name: name
+              name: name,
+              car: "None",
+              service_type: "None",
+              price: "None"
           })
           .then(function() {
               console.log("Document successfully written!");
